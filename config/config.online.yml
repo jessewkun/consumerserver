@@ -1,0 +1,22 @@
+user:
+  name: user
+  kafkaconfig:
+    group: user_group_1
+    brokers:
+      - 127.0.0.1:9092
+    topics:
+      - user
+  mysqlconfig:
+    host: 127.0.0.1
+    network: tcp
+    db: user
+    user: user
+    port: 3306
+    password: user
+    table: user
+  consumerconfig:
+    kafkafreq: 0
+    batchaddnum: 20
+    insertfreq: 100
+
+env: online
