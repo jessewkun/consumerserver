@@ -10,7 +10,7 @@ import (
 )
 
 type UserDetal struct {
-	Age        int    `json:"business_id"`
+	Age        int    `json:"age"`
 	Name       string `json:"name"`
 	CreateTime string `json:"create_time"`
 	Extra      string `json:"extra"`
@@ -25,7 +25,7 @@ func (u User) String() string {
 }
 
 func NewUser(c utils.Consumer) User {
-	sgl := User{}
+	u := User{}
 	u.Name = c.Name
 	u.KafkaConfig = c.KafkaConfig
 	u.MysqlConfig = c.MysqlConfig
@@ -35,7 +35,7 @@ func NewUser(c utils.Consumer) User {
 	u.MysqlConn = utils.NewMysql(u.MysqlConfig)
 	u.MsgChan = make(chan []byte, 600)
 	u.ExitChan = make(chan int, 1)
-	return sgl
+	return u
 }
 
 func (u User) Handler() {
